@@ -1,2 +1,1 @@
-# SQL
-These codes are written is SQL
+# These codes are written is SQL
