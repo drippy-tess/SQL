@@ -19,3 +19,17 @@ ALTER TABLE diak DROP INDEX email;
 ALTER TABLE diak drop diakAZ;
 
 alter table diak add diakAZ int AUTO_INCREMENT PRIMARY KEY FIRST;
+
+ALTER table diak add osztaly varchar(6);
+
+CREATE table osztalyok
+(
+	osztaly varchar(6) PRIMARY KEY,
+    osztalyfonok varchar(40) not null,
+    osztalyterem tinyint UNIQUE
+);
+
+INSERT INTO `osztalyok`(`osztaly`, `osztalyfonok`, `osztalyterem`) VALUES 
+("9.a","Vass Mária",30),
+("9.b", "Tóth Márton", 14),
+("9.c", "Kovácsné Kertész Etelka", 32);
