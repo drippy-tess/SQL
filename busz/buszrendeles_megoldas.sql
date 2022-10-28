@@ -40,3 +40,18 @@ drop index kmdij on busz;
 create index komfort_idx on busz(komfort);
 
 alter table rendeles MODIFY megrendelo varchar(100);
+
+UPDATE `busz` SET kmdij=kmdij*1.2,`oradij`=oradij*1.12 WHERE tipus like "NEOPLAN%";
+
+INSERT INTO `busz`(`ferohely`, `tipus`, `komfort`, `kmdij`, `oradij`) VALUES 
+(28, "MITSUBISHI", "légkondícionált", 209, 4700);
+
+alter table rendeles add fizetendo float;
+
+UPDATE `rendeles` SET `fizetendo`=7 *2600 * nap * 1.27 WHERE km_e = 0;
+
+alter table rendeles add primary key(busz_szam, rendelesdatum);
+
+delete from rendeles WHERE rendelesdatum BETWEEN "2020-09-01" and "2020-11-30" and km_e = 1;
+
+alter table busz drop komfort;
