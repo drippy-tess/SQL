@@ -18,10 +18,10 @@ foreign key(kategoriaID) references kategoria(kategoriaID)
 );
 
 INSERT INTO `kategoria`("kategorianev") VALUES 
-("akkumulátoros bozótvágó"),
-("benzinmotoros fûrész"),
-("elektromos lombszívó"),
-("permetezõ");
+("akkumulÃ¡toros bozÃ³tvÃ¡gÃ³"),
+("benzinmotoros fÃ»rÃ©sz"),
+("elektromos lombszÃ­vÃ³"),
+("permetezÃµ");
 
 INSERT INTO `gepek`(`cikkszam`, `gepnev`, `ar`, `raktarkeszlet`, `suly`, `engedmenyes`, `kategoriaID`) VALUES 
 (15630, "RURIS DAC 401S", 39990, 11, 5.5, 0, 2),
@@ -39,4 +39,10 @@ update gepek set ar = ar * 0.9 where engedmenyes = 1;
 
 alter table gepek add nettoar float;
 
-update gepek set nettoar = ar * 0.78;
+update gepek set nettoar = ar / 1.27;
+
+alter table gepek modify raktarkeszlet smallint;
+
+delete from gepek where engedmenyes = 1 and suly > 5;
+
+alter table gepek drop engedmenyes;
